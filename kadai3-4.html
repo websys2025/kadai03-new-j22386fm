@@ -34,11 +34,18 @@
             // 商品購入の関数
             function buyItem(no) {
                 // ここにコードを書く
-   		console.log("商品番号：" + no +", 商品名："+items[no].name + "を購入します。");
-		if(items[no].stock == 0){
+		const index = no -1;
+		if (index < 0 || index >= items.length) {
+
+  			console.log(no+"は無効な商品番号です。番号は1～8で指定してください");
+    			return;
+		}
+   		console.log("商品番号：" + no +", 商品名："+items[index].name + "を購入します。");
+
+		if(items[index].stock == 0){
 			console.log("在庫がありません。");
 		}else{
-			items[no].stock -= 1; // 在庫を減らす
+			items[index].stock -= 1; // 在庫を減らす
 		}
                 showItemList(); // 商品一覧の表示関数呼び出し
             }
@@ -46,8 +53,8 @@
             showItemList(); // 商品一覧の表示関数呼び出し
             buyItem(3); // 商品購入の関数呼び出し
 
-            buyItem(4); // 商品購入の関数呼び出し
-            buyItem(4); // 商品購入の関数呼び出し
+            buyItem(5); // 商品購入の関数呼び出し
+            buyItem(5); // 商品購入の関数呼び出し
 
         </script>
     </body>
